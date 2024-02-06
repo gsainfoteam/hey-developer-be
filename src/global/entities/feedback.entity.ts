@@ -3,7 +3,7 @@ import { Photo } from './photo.entity';
 
 @Entity('feedback')
 export class Feedback {
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'uuid' })
   feedback_uuid: string;
 
   @Column()

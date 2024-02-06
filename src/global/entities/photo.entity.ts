@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('photo')
 export class Photo {
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'uuid' })
   photo_uuid: string;
 
   @Column()
