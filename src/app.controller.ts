@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -13,5 +13,10 @@ export class AppController {
     @Body('photos') photos: string[],
   ) {
     return this.appService.setFeedback(service, feedback, email, photos);
+  }
+
+  @Get()
+  async getHello() {
+    return 'Hello World!';
   }
 }
