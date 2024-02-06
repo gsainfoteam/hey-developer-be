@@ -27,6 +27,7 @@ import { Photo } from './global/entities/photo.entity';
         };
       },
     }),
+    TypeOrmModule.forFeature([Feedback, Photo]),
   ],
   controllers: [AppController],
   providers: [AppService],
