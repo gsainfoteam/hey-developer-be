@@ -7,10 +7,11 @@ export class AppController {
 
   @Post()
   async setFeedback(
+    @Body('service') service: string,
     @Body('feedback') feedback: string,
     @Body('email') email: string,
     @Body('photos') photos: string[],
   ) {
-    return this.appService.setFeedback(feedback, email, photos);
+    return this.appService.setFeedback(service, feedback, email, photos);
   }
 }
