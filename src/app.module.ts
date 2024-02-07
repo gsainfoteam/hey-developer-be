@@ -23,7 +23,7 @@ import { Photo } from './global/entities/photo.entity';
           password: configService.get('DATABASE_PASSWORD'),
           database: configService.get('DATABASE_DBNAME'),
           entities: [Feedback, Photo],
-          synchronize: true,
+          synchronize: false,
         };
       },
     }),
