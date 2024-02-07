@@ -12,10 +12,10 @@ export class AppService {
   ) {}
 
   async setFeedback(
-    service: string,
-    feedback: string,
-    email: string,
-    photos: string[],
+    service?: string,
+    feedback?: string,
+    email?: string,
+    photos?: string[],
   ): Promise<Feedback> {
     sendSlackMessage(process.env.SLACK_WEBHOOK_URL, {
       text: `사용자 피드백 접수`,
