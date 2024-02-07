@@ -3,12 +3,15 @@ import { Repository } from 'typeorm';
 import { Feedback } from './global/entities/feedback.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import sendSlackMessage from './global/utils/sendMessage';
+import { Photo } from './global/entities/photo.entity';
 
 @Injectable()
 export class AppService {
   constructor(
     @InjectRepository(Feedback)
     private repo: Repository<Feedback>,
+    @InjectRepository(Photo)
+    private photoRepository: Repository<Photo>,
   ) {}
 
   async setFeedback(
@@ -44,11 +47,20 @@ export class AppService {
         },
       ],
     });
-    return await this.repo.save({
+    const newFeedback = await this.repo.save({
       service,
       feedback,
       email,
-      photos: photos.map((photo) => ({ photo })),
     });
+
+    if (photos && photos.length > 0) {
+      const photoEntities = photos.map((photo) => ({
+        photo,
+        feedback_uuid: newFeedback.feedback_uuid,
+      }));
+      this.photoRepository.save(photoEntities);
+    }
+
+    return newFeedback;
   }
 }
