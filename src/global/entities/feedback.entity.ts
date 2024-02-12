@@ -10,7 +10,7 @@ export class Feedback {
   service: string;
 
   @Column({ default: '' })
-  feecback: string;
+  feedback: string;
 
   @OneToMany(() => Photo, (photo) => photo.feedback_uuid, { cascade: true })
   photos: Photo[];
