@@ -20,6 +20,21 @@ export class AppService {
     email?: string,
     photos?: string[],
   ): Promise<Feedback> {
+    const newFeedback = await this.repo.save({
+      service,
+      feedback,
+      email,
+    });
+
+    const photoEntities = await Promise.all(
+      photos.map((photo) =>
+        this.photoRepository.save({
+          photo,
+          feedback_uuid: newFeedback.feedback_uuid,
+        }),
+      ),
+    );
+
     sendSlackMessage(process.env.SLACK_WEBHOOK_URL, {
       text: `사용자 피드백 접수`,
       username: 'Hey Developer!',
@@ -45,21 +60,11 @@ export class AppService {
             },
           ],
         },
+        ...photoEntities.map((photo) => ({
+          image_url: `${process.env.API_BASE_URL}/photos/${photo.photo_uuid}`,
+        })),
       ],
     });
-    const newFeedback = await this.repo.save({
-      service,
-      feedback,
-      email,
-    });
-
-    if (photos && photos.length > 0) {
-      const photoEntities = photos.map((photo) => ({
-        photo,
-        feedback_uuid: newFeedback.feedback_uuid,
-      }));
-      this.photoRepository.save(photoEntities);
-    }
 
     return newFeedback;
   }
