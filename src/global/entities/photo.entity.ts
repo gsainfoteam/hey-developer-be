@@ -5,7 +5,7 @@ export class Photo {
   @PrimaryGeneratedColumn('uuid')
   photo_uuid: string;
 
-  @Column()
+  @Column('longtext')
   photo: string;
 
   @Column()
