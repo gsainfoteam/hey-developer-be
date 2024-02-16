@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Feedback } from './global/entities/feedback.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -62,5 +62,17 @@ export class AppService {
     }
 
     return newFeedback;
+  }
+
+  async getPhoto(uuid: string) {
+    const photo = await this.photoRepository.findOne({
+      where: { photo_uuid: uuid },
+    });
+    if (!photo) throw new NotFoundException();
+    const data = Buffer.from(photo.photo).toString();
+    const mime = data.split(';')[0].split(':')[1];
+    const base64 = data.split(';')[1].split(',')[1];
+    const buffer = Buffer.from(base64, 'base64');
+    return { mime, buffer };
   }
 }
