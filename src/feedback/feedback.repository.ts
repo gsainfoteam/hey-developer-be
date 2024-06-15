@@ -1,5 +1,5 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
-import { Feedback } from '@prisma/client';
+import { Feedback, Prisma } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { PrismaService } from 'src/prisma/prisma.service';
 
@@ -14,7 +14,7 @@ export class FeedbackRepository {
     photos,
   }: Pick<Feedback, 'service' | 'email' | 'feedback'> & {
     photos?: string[];
-  }): Promise<Feedback> {
+  }): Promise<Prisma.FeedbackGetPayload<{ include: { Photos: true } }>> {
     return this.prismaService.feedback
       .create({
         data: {
@@ -26,6 +26,9 @@ export class FeedbackRepository {
               data: photos?.map((photo) => ({ photo })),
             },
           },
+        },
+        include: {
+          Photos: true,
         },
       })
       .catch((error) => {
