@@ -13,9 +13,9 @@ export class FeedbackRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
   async createFeedback({
-    service,
-    email,
-    feedback,
+    service = '',
+    email = '',
+    feedback = '',
     photos = [],
   }: Pick<Feedback, 'service' | 'email' | 'feedback'> & {
     photos?: string[];
