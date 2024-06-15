@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Photo {
+  uuid  String @id @default(uuid()) @db.Uuid
+  photo String
+
+  feedbackUuid String   @map("feedback_uuid") @db.Uuid
+  feedback     Feedback @relation(fields: [feedbackUuid], references: [uuid])
+}
+
+model Feedback {
+  uuid     String  @id @default(uuid()) @db.Uuid
+  service  String
+  feedback String
+  email    String?
+
+  Photos Photo[]
+}
