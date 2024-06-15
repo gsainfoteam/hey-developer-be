@@ -16,9 +16,10 @@ model Photo {
 }
 
 model Feedback {
-  uuid     String @id @default(uuid()) @db.Uuid
+  uuid     String  @id @default(uuid()) @db.Uuid
   service  String
   feedback String
+  email    String?
 
   Photos Photo[]
 }
