@@ -11,7 +11,7 @@ model Photo {
   uuid  String @id @default(uuid()) @db.Uuid
   photo String
 
-  feedbackUuid String   @map("feedback_uuid")
+  feedbackUuid String   @map("feedback_uuid") @db.Uuid
   feedback     Feedback @relation(fields: [feedbackUuid], references: [uuid])
 }
 
