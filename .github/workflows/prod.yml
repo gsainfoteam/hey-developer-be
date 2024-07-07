@@ -2,8 +2,8 @@ name: Update Kubernetes Cluster (Dev)
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
 
 jobs:
   build:
