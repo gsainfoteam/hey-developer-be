@@ -1,0 +1,17 @@
+Project CS {
+  database_type: 'PostgreSQL'
+}
+
+Table Photo {
+  uuid uuid [pk]
+  photo text
+
+  feedback_uuid uuid [ref: > Feedback.uuid]
+}
+
+Table Feedback {
+  uuid uuid [pk]
+  service text
+  feedback text
+  email text
+}
