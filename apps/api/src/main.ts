@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { ApiModule } from './api.module';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { json } from 'express';
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiModule);
@@ -29,6 +30,7 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
+  app.use(json({ limit: '50mb' }));
   await app.listen(3000);
 }
 bootstrap();
