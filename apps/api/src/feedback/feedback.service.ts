@@ -30,7 +30,7 @@ export class FeedbackService {
           .replace(/\\n/g, '\n'),
         accessUrl: configService.getOrThrow<string>('EMAIL_ACCESS_URL'),
       },
-      from: `No Reply <${configService.getOrThrow<string>('EMAIL_USER')}>`,
+      from: `Infoteam Feedback <${configService.getOrThrow<string>('EMAIL_SENDER')}>`,
       tls: { rejectUnauthorized: false },
     });
   }
