@@ -5,7 +5,7 @@ import {
   Logger,
 } from '@nestjs/common';
 import { Photo } from '@prisma/client';
-import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 
 @Injectable()
 export class PhotoRepository {
