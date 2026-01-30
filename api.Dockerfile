@@ -16,7 +16,7 @@ RUN npx prisma generate
 RUN npx nest build api
 
 #Step 2: Copy the build from 'builder' to 'runner'
-FROM node:18-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
