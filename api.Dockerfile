@@ -29,6 +29,6 @@ COPY --from=builder /app ./
 
 RUN yarn add prisma -D
 
-EXPOSE 3000
+EXPOSE 3000 9090
 
 CMD ["npm", "run", "start:api.deploy"]

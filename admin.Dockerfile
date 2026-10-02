@@ -13,7 +13,7 @@ COPY . .
 
 RUN npx prisma generate
 
-RUN npx nest build api
+RUN npx nest build admin
 
 #Step 2: Copy the build from 'builder' to 'runner'
 FROM node:22-alpine
@@ -29,6 +29,6 @@ COPY --from=builder /app ./
 
 RUN yarn add prisma -D
 
-EXPOSE 3000
+EXPOSE 3000 9090
 
 CMD ["npm", "run", "start:admin.deploy"]

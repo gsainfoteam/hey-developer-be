@@ -1486,6 +1486,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/api-logs@npm:0.207.0":
+  version: 0.207.0
+  resolution: "@opentelemetry/api-logs@npm:0.207.0"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.3.0"
+  checksum: 10c0/daa5c8b8f7cd411d7e04c1ab09df408b9e663ea6c353cee32c31f8128125632c579efe727a72c3693af0c4fbbbbe8959d801bf53a0482b6225cf3798df359bdc
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/api-logs@npm:0.222.0, @opentelemetry/api-logs@npm:^0.222.0":
   version: 0.222.0
   resolution: "@opentelemetry/api-logs@npm:0.222.0"
@@ -2270,6 +2279,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@opentelemetry/instrumentation@npm:^0.207.0":
+  version: 0.207.0
+  resolution: "@opentelemetry/instrumentation@npm:0.207.0"
+  dependencies:
+    "@opentelemetry/api-logs": "npm:0.207.0"
+    import-in-the-middle: "npm:^2.0.0"
+    require-in-the-middle: "npm:^8.0.0"
+  peerDependencies:
+    "@opentelemetry/api": ^1.3.0
+  checksum: 10c0/1796e958f8bcf483f37a59c05a6876d13ee95528ac3b3f594928fbd030ad85d05b9804d6b7905b90c232965ddbce9bdc90efd15b751a0456a6252d631f8ebb3f
+  languageName: node
+  linkType: hard
+
 "@opentelemetry/otlp-exporter-base@npm:0.222.0":
   version: 0.222.0
   resolution: "@opentelemetry/otlp-exporter-base@npm:0.222.0"
@@ -2700,6 +2722,17 @@ __metadata:
   dependencies:
     "@prisma/debug": "npm:7.3.0"
   checksum: 10c0/a7933e5bdec55d4717e8a7d4422f4aff9795c9c685ed4f302af125a8c8efde8050c5a5023a26e34aa1b236e2b956707c9a0e35809b3cde3d73ce06e4e3d88a89
+  languageName: node
+  linkType: hard
+
+"@prisma/instrumentation@npm:^7.3.0":
+  version: 7.10.0
+  resolution: "@prisma/instrumentation@npm:7.10.0"
+  dependencies:
+    "@opentelemetry/instrumentation": "npm:^0.207.0"
+  peerDependencies:
+    "@opentelemetry/api": ^1.8
+  checksum: 10c0/c6bdad2f69f7509da268e01c76b0dbf9beeea6d3f0578c4cf4cbd56db82a96c69977dd8f02501826f5f30c534cc6eb409e77dfcb935cdf5b93f7b70accd2533a
   languageName: node
   linkType: hard
 
@@ -3702,6 +3735,15 @@ __metadata:
   bin:
     acorn: bin/acorn
   checksum: 10c0/51fb26cd678f914e13287e886da2d7021f8c2bc0ccc95e03d3e0447ee278dd3b40b9c57dc222acd5881adcf26f3edc40901a4953403232129e3876793cd17386
+  languageName: node
+  linkType: hard
+
+"acorn@npm:^8.15.0":
+  version: 8.18.0
+  resolution: "acorn@npm:8.18.0"
+  bin:
+    acorn: bin/acorn
+  checksum: 10c0/be771be2135cc07910cf76f444ad514d7dcfd6d4a8026e597e93155275abc8ef61eee12211d52146e9d962874269b634f397464942087be013c89d0c54c5f8e5
   languageName: node
   linkType: hard
 
@@ -6507,6 +6549,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"import-in-the-middle@npm:^2.0.0":
+  version: 2.0.6
+  resolution: "import-in-the-middle@npm:2.0.6"
+  dependencies:
+    acorn: "npm:^8.15.0"
+    acorn-import-attributes: "npm:^1.9.5"
+    cjs-module-lexer: "npm:^2.2.0"
+    module-details-from-path: "npm:^1.0.4"
+  checksum: 10c0/fc70dafe7b3513811fbbc0b281093a257c16d67ace0470e20fb292e5c182a99eb5611a3590d8792ef1f059026f2be5748808e8cba7d618954a92e11f6863f891
+  languageName: node
+  linkType: hard
+
 "import-in-the-middle@npm:^3.0.0":
   version: 3.5.2
   resolution: "import-in-the-middle@npm:3.5.2"
@@ -8156,8 +8210,10 @@ __metadata:
     "@nestjs/swagger": "npm:^7.4.0"
     "@nestjs/terminus": "npm:^10.2.3"
     "@nestjs/testing": "npm:^10.0.0"
+    "@opentelemetry/api": "npm:^1.9.1"
     "@prisma/adapter-pg": "npm:^7.3.0"
     "@prisma/client": "npm:^7.3.0"
+    "@prisma/instrumentation": "npm:^7.3.0"
     "@types/express": "npm:^4.17.17"
     "@types/jest": "npm:^29.5.2"
     "@types/node": "npm:^20.3.1"
