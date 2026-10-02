@@ -3,7 +3,7 @@ name: Update Kubernetes Cluster (Dev)
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 env:
   REGISTRY: ghcr.io
@@ -55,6 +55,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+          secrets: |
+            "NPM_TOKEN=${{ secrets.GITHUB_TOKEN }}"
 
   deploy:
     name: Update Git Repository

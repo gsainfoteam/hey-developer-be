@@ -7,7 +7,7 @@ COPY package.json yarn.lock ./
 
 RUN apk update && \
   apk add build-base libheif vips-dev vips -q
-RUN yarn
+RUN --mount=type=secret,id=NPM_TOKEN,env=NPM_TOKEN yarn --immutable
 
 COPY . .
 
