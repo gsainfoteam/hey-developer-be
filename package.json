@@ -89,5 +89,6 @@
     "moduleNameMapper": {
       "^@lib/prisma(|/.*)$": "<rootDir>/libs/prisma/src/$1"
     }
-  }
+  },
+  "packageManager": "yarn@4.18.1"
 }

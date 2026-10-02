@@ -3,11 +3,12 @@ FROM node:22-alpine AS builder
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json yarn.lock .yarnrc.yml ./
 
 RUN apk update && \
-  apk add build-base libheif vips-dev vips -q
-RUN yarn
+  apk add build-base libheif vips-dev vips -q && \
+  corepack enable
+RUN --mount=type=secret,id=NPM_TOKEN,env=NPM_TOKEN yarn --frozen-lockfile
 
 COPY . .
 
