@@ -6,8 +6,10 @@ import {
 } from '@nestjs/common';
 import { Photo } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
+import { Trace } from '@gsainfoteam/nest-observability';
 
 @Injectable()
+@Trace()
 export class PhotoRepository {
   private readonly logger = new Logger(PhotoRepository.name);
   constructor(private readonly prismaService: PrismaService) {}

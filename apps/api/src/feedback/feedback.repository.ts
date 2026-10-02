@@ -6,8 +6,10 @@ import {
 } from '@nestjs/common';
 import { Feedback, Prisma } from '@prisma/client';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
+import { Trace } from '@gsainfoteam/nest-observability';
 
 @Injectable()
+@Trace()
 export class FeedbackRepository {
   private readonly logger = new Logger(FeedbackRepository.name);
   constructor(private readonly prismaService: PrismaService) {}

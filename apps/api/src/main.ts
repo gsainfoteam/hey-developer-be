@@ -7,20 +7,10 @@ import {
   initializeMetrics,
   MetricsInterceptor,
   shutdownOpenTelemetry,
-  Trace,
 } from '@gsainfoteam/nest-observability';
 import { Logger } from '@nestjs/common';
-import { FeedbackRepository } from './feedback/feedback.repository';
-import { FeedbackService } from './feedback/feedback.service';
-import { PhotoRepository } from './photo/photo.repository';
-import { PhotoService } from './photo/photo.service';
 
 const serviceName = process.env.OTEL_SERVICE_NAME ?? 'hey-developer-api';
-
-Trace()(FeedbackService);
-Trace()(FeedbackRepository);
-Trace()(PhotoService);
-Trace()(PhotoRepository);
 
 async function bootstrap() {
   const app = await NestFactory.create(ApiModule);

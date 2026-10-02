@@ -1,8 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { PhotoRepository } from './photo.repository';
 import { GetPhotoResDto } from './dto/res/getPhotoRes.dto';
+import { Trace } from '@gsainfoteam/nest-observability';
 
 @Injectable()
+@Trace()
 export class PhotoService {
   private readonly logger = new Logger(PhotoService.name);
   constructor(private readonly photoRepository: PhotoRepository) {}

@@ -5,8 +5,10 @@ import { ConfigService } from '@nestjs/config';
 import { CreateFeedbackReqDto } from './dto/req/createFeedbackReq.dto';
 import { Feedback } from '@prisma/client';
 import { createTransport, Transporter } from 'nodemailer';
+import { Trace } from '@gsainfoteam/nest-observability';
 
 @Injectable()
+@Trace()
 export class FeedbackService {
   private readonly logger = new Logger(FeedbackService.name);
   private readonly apiBaseUrl: string;
