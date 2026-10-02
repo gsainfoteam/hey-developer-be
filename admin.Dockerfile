@@ -29,8 +29,6 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone &
 
 COPY --from=builder /app ./
 
-RUN yarn add prisma -D
-
 EXPOSE 3000 9090
 
 CMD ["npm", "run", "start:admin.deploy"]
